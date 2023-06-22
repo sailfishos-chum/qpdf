@@ -20,7 +20,6 @@ Source100:  qpdf.yaml
 Source101:  qpdf-rpmlintrc
 BuildRequires:  pkgconfig(openssl)
 BuildRequires:  pkgconfig(zlib)
-BuildRequires:  cmake
 BuildRequires:  perl
 BuildRequires:  libjpeg-turbo-devel
 BuildRequires:  cmake
@@ -39,7 +38,7 @@ wants to do programmatic or command-line-based manipulation of PDF
 files.
 
 %if "%{?vendor}" == "chum"
-PackageName: QPDF
+Title: QPDF
 Type: console-application
 PackagerName: nephros
 Categories:
@@ -59,7 +58,7 @@ Url:
 
 
 %package tools
-Summary:    Library files for %{name}
+Summary:    Tools for %{name}
 Group:      Applications
 
 %description tools
@@ -77,7 +76,7 @@ files.
 
 
 %if "%{?vendor}" == "chum"
-PackageName: QPDF Tools
+Title: QPDF Tools
 PackagerName: nephros
 Type: console-application
 Categories:
@@ -86,6 +85,7 @@ Categories:
 Icon: https://qpdf.sourceforge.io/qpdf.svg
 Custom:
   Repo: %{url}
+  PackagingRepo: https://github.com:sailfishos-chum/qpdf
 Url:
   Homepage: https://qpdf.sourceforge.io/
   Help: https://qpdf.readthedocs.io/en/stable/
@@ -121,6 +121,7 @@ Categories:
 Icon: https://qpdf.sourceforge.io/qpdf.svg
 Custom:
   Repo: %{url}
+  PackagingRepo: https://github.com:sailfishos-chum/qpdf
 Url:
   Homepage: https://qpdf.sourceforge.io/
   Help: https://qpdf.readthedocs.io/en/stable/
@@ -154,6 +155,7 @@ Categories:
 Icon: https://qpdf.sourceforge.io/qpdf.svg
 Custom:
   Repo: %{url}
+  PackagingRepo: https://github.com:sailfishos-chum/qpdf
 Url:
   Homepage: https://qpdf.sourceforge.io/
   Help: https://qpdf.readthedocs.io/en/stable/

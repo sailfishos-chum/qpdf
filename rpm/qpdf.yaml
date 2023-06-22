@@ -22,7 +22,7 @@ Description: |
     files.
 
     %if "%{?vendor}" == "chum"
-    PackageName: QPDF
+    Title: QPDF
     Type: console-application
     PackagerName: nephros
     Categories:
@@ -61,7 +61,7 @@ Macros:
 #  - 'baz'
 #Requires:
 PkgBR:
-  - cmake
+  # cmake
   - perl
   - libjpeg-turbo-devel
 PkgConfigBR:
@@ -85,7 +85,7 @@ NoFiles: true
 
 SubPackages:
     - Name: tools
-      Summary: Library files for %{name}
+      Summary: Tools for %{name}
       Group: Applications
       AutoDepend: false
       Description: |
@@ -103,7 +103,7 @@ SubPackages:
 
 
           %if "%{?vendor}" == "chum"
-          PackageName: QPDF Tools
+          Title: QPDF Tools
           PackagerName: nephros
           Type: console-application
           Categories:
@@ -112,6 +112,7 @@ SubPackages:
           Icon: https://qpdf.sourceforge.io/qpdf.svg
           Custom:
             Repo: %{url}
+            PackagingRepo: https://github.com:sailfishos-chum/qpdf
           Url:
             Homepage: https://qpdf.sourceforge.io/
             Help: https://qpdf.readthedocs.io/en/stable/
@@ -149,6 +150,7 @@ SubPackages:
           Icon: https://qpdf.sourceforge.io/qpdf.svg
           Custom:
             Repo: %{url}
+            PackagingRepo: https://github.com:sailfishos-chum/qpdf
           Url:
             Homepage: https://qpdf.sourceforge.io/
             Help: https://qpdf.readthedocs.io/en/stable/
@@ -184,6 +186,7 @@ SubPackages:
           Icon: https://qpdf.sourceforge.io/qpdf.svg
           Custom:
             Repo: %{url}
+            PackagingRepo: https://github.com:sailfishos-chum/qpdf
           Url:
             Homepage: https://qpdf.sourceforge.io/
             Help: https://qpdf.readthedocs.io/en/stable/
