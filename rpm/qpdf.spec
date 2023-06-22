@@ -48,7 +48,7 @@ Categories:
  - Library
 Custom:
   Repo: %{url}
-#  PackagingRepo: %{url}
+  PackagingRepo: https://github.com:sailfishos-chum/qpdf
 Icon: https://qpdf.sourceforge.io/qpdf.svg
 Url:
   Homepage: https://qpdf.sourceforge.io/
@@ -163,7 +163,7 @@ Url:
 
 
 %prep
-%setup -q -n %{name}-%{version}
+%setup -q -n %{name}-%{version}/upstream
 
 # >> setup
 # << setup

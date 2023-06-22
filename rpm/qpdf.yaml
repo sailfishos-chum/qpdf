@@ -31,7 +31,7 @@ Description: |
      - Library
     Custom:
       Repo: %{url}
-    #  PackagingRepo: %{url}
+      PackagingRepo: https://github.com:sailfishos-chum/qpdf
     Icon: https://qpdf.sourceforge.io/qpdf.svg
     Url:
       Homepage: https://qpdf.sourceforge.io/
@@ -40,7 +40,7 @@ Description: |
       Donation: https://www.paypal.com/cgi-bin/webscr?item_name=Donation+to+QPDF&cmd=_donations&business=ejb%40ql.org
     %endif
 
-#SetupOptions: -q -n %{name}-%{version}/upstream
+SetupOptions: -q -n %{name}-%{version}/upstream
 RpmLintIgnore:
   - 'summary-too-long'
   - 'no-changelogname-tag'
