@@ -1,0 +1,199 @@
+Name: qpdf
+Summary: PDF transformation/manipulation program + library
+Version: 11.3.0
+Release: 0
+Group: Applications
+License: ASL 2.0 or Artistic 2.0
+URL: https://qpdf.sourceforge.io/
+SCM: https://github.com/qpdf/qpdf/
+Sources:
+    - '%{name}-%{version}.tar.gz'
+Description: |
+    QPDF is a command-line tool and C++ library that performs
+    content-preserving transformations on PDF files. It supports
+    linearization, encryption, and numerous other features. It can also
+    be used for splitting and merging files, creating PDF files (but you
+    have to supply all the content yourself), and inspecting files for
+    study or analysis. QPDF does not render PDFs or perform text
+    extraction, and it does not contain higher-level interfaces for
+    working with page contents. It is a low-level tool for working with
+    the structure of PDF files and can be a valuable tool for anyone who
+    wants to do programmatic or command-line-based manipulation of PDF
+    files.
+
+    %if "%{?vendor}" == "chum"
+    PackageName: QPDF
+    Type: console-application
+    PackagerName: nephros
+    Categories:
+     - Office
+     - Utility
+     - Library
+    Custom:
+      Repo: %{url}
+    #  PackagingRepo: %{url}
+    Icon: https://qpdf.sourceforge.io/qpdf.svg
+    Url:
+      Homepage: https://qpdf.sourceforge.io/
+      Help: https://qpdf.readthedocs.io/en/stable/
+      Bugtracker: https://github.com/qpdf/qpdf/issues/
+      Donation: https://www.paypal.com/cgi-bin/webscr?item_name=Donation+to+QPDF&cmd=_donations&business=ejb%40ql.org
+    %endif
+
+#SetupOptions: -q -n %{name}-%{version}/upstream
+RpmLintIgnore:
+  - 'summary-too-long'
+  - 'no-changelogname-tag'
+  - 'invalid-url'
+  - 'desktopfile-without-binary'
+  - 'explicit-lib-dependency'
+Macros:
+  - '__cmake_in_source_build;OFF'
+#  - |
+#    spectacle_bug; hack_fix
+#    # Spectacular spectacle hack:
+#    #   abuse Macros to work around the Macro-deleting bug in 0.32
+#    #   also, add a conditional dep:
+#    %if 0%{?sailfishos_version} >= 30400
+#    BuildRequires: some-package
+#    %endif
+#Patches:
+#  - 'baz'
+#Requires:
+PkgBR:
+  - cmake
+  - perl
+  - libjpeg-turbo-devel
+PkgConfigBR:
+  - openssl
+  - zlib
+#Configure: none
+Builder: cmake
+ConfigOptions:
+  - '-S ../'
+  - '-DCMAKE_BUILD_TYPE=Release'
+  - '-DBUILD_STATIC_LIBS=OFF'
+  - '-DCMAKE_POSITION_INDEPENDENT_CODE=True'
+  - '-DINSTALL_MANUAL=OFF'
+  - '-DINSTALL_EXAMPLES=OFF'
+  - '-DREQUIRE_CRYPTO_OPENSSL=ON'
+  - '-DDEFAULT_CRYPTO_OPENSSL=ON'
+#Builder: qmake5
+#NoIconCache: true
+#BuildArch: noarch
+NoFiles: true
+
+SubPackages:
+    - Name: tools
+      Summary: Library files for %{name}
+      Group: Applications
+      AutoDepend: false
+      Description: |
+          QPDF is a command-line tool and C++ library that performs
+          content-preserving transformations on PDF files. It supports
+          linearization, encryption, and numerous other features. It can also
+          be used for splitting and merging files, creating PDF files (but you
+          have to supply all the content yourself), and inspecting files for
+          study or analysis. QPDF does not render PDFs or perform text
+          extraction, and it does not contain higher-level interfaces for
+          working with page contents. It is a low-level tool for working with
+          the structure of PDF files and can be a valuable tool for anyone who
+          wants to do programmatic or command-line-based manipulation of PDF
+          files.
+
+
+          %if "%{?vendor}" == "chum"
+          PackageName: QPDF Tools
+          PackagerName: nephros
+          Type: console-application
+          Categories:
+           - Office
+           - Utility
+          Icon: https://qpdf.sourceforge.io/qpdf.svg
+          Custom:
+            Repo: %{url}
+          Url:
+            Homepage: https://qpdf.sourceforge.io/
+            Help: https://qpdf.readthedocs.io/en/stable/
+            Bugtracker: https://github.com/qpdf/qpdf/issues/
+            Donation: https://www.paypal.com/cgi-bin/webscr?item_name=Donation+to+QPDF&cmd=_donations&business=ejb%40ql.org
+          %endif
+
+      Files:
+        - '%license LICENSE.txt'
+        - '%{_bindir}/*'
+
+    - Name: lib%{name}
+      Summary: Library files for %{name}
+      Group: Applications
+      AsWholeName: true
+      AutoDepend: false
+      Description: |
+          QPDF is a command-line tool and C++ library that performs
+          content-preserving transformations on PDF files. It supports
+          linearization, encryption, and numerous other features. It can also
+          be used for splitting and merging files, creating PDF files (but you
+          have to supply all the content yourself), and inspecting files for
+          study or analysis. QPDF does not render PDFs or perform text
+          extraction, and it does not contain higher-level interfaces for
+          working with page contents. It is a low-level tool for working with
+          the structure of PDF files and can be a valuable tool for anyone who
+          wants to do programmatic or command-line-based manipulation of PDF
+          files.
+
+
+          %if "%{?vendor}" == "chum"
+          PackagerName: nephros
+          Categories:
+           - Library
+          Icon: https://qpdf.sourceforge.io/qpdf.svg
+          Custom:
+            Repo: %{url}
+          Url:
+            Homepage: https://qpdf.sourceforge.io/
+            Help: https://qpdf.readthedocs.io/en/stable/
+            Bugtracker: https://github.com/qpdf/qpdf/issues/
+            Donation: https://www.paypal.com/cgi-bin/webscr?item_name=Donation+to+QPDF&cmd=_donations&business=ejb%40ql.org
+          %endif
+      Files:
+        - '%license LICENSE.txt'
+        - '%{_libdir}/*.so.*'
+    - Name:  devel
+      Summary: Development files for %{name}
+      Group: Applications
+      AutoDepend: false
+      Requires:
+        - 'lib%{name} = %{version}-%{release}'
+      Description: |
+          QPDF is a command-line tool and C++ library that performs
+          content-preserving transformations on PDF files. It supports
+          linearization, encryption, and numerous other features. It can also
+          be used for splitting and merging files, creating PDF files (but you
+          have to supply all the content yourself), and inspecting files for
+          study or analysis. QPDF does not render PDFs or perform text
+          extraction, and it does not contain higher-level interfaces for
+          working with page contents. It is a low-level tool for working with
+          the structure of PDF files and can be a valuable tool for anyone who
+          wants to do programmatic or command-line-based manipulation of PDF
+          files.
+
+          %if "%{?vendor}" == "chum"
+          PackagerName: nephros
+          Categories:
+           - Library
+          Icon: https://qpdf.sourceforge.io/qpdf.svg
+          Custom:
+            Repo: %{url}
+          Url:
+            Homepage: https://qpdf.sourceforge.io/
+            Help: https://qpdf.readthedocs.io/en/stable/
+            Bugtracker: https://github.com/qpdf/qpdf/issues/
+            Donation: https://www.paypal.com/cgi-bin/webscr?item_name=Donation+to+QPDF&cmd=_donations&business=ejb%40ql.org
+          %endif
+      Files:
+        - '%license LICENSE.txt'
+        - '%{_includedir}/%{name}/*'
+        - '%{_libdir}/*.so'
+        - '%{_libdir}/cmake/*'
+        - '%{_libdir}/pkgconfig/*'
+
