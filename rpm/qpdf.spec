@@ -18,7 +18,8 @@ URL:        https://qpdf.sourceforge.io/
 Source0:    %{name}-%{version}.tar.gz
 Source100:  qpdf.yaml
 Source101:  qpdf-rpmlintrc
-BuildRequires:  pkgconfig(openssl)
+BuildRequires:  pkgconfig(libcrypto)
+BuildRequires:  pkgconfig(libssl)
 BuildRequires:  pkgconfig(zlib)
 BuildRequires:  perl
 BuildRequires:  libjpeg-turbo-devel

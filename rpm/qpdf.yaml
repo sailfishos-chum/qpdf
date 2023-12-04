@@ -65,7 +65,8 @@ PkgBR:
   - perl
   - libjpeg-turbo-devel
 PkgConfigBR:
-  - openssl
+  - libcrypto
+  - libssl
   - zlib
 #Configure: none
 Builder: cmake
