@@ -79,6 +79,7 @@ ConfigOptions:
   - '-DINSTALL_EXAMPLES=OFF'
   - '-DREQUIRE_CRYPTO_OPENSSL=ON'
   - '-DDEFAULT_CRYPTO_OPENSSL=ON'
+  - '--target qpdf'
 #Builder: qmake5
 #NoIconCache: true
 #BuildArch: noarch
