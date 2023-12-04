@@ -173,6 +173,11 @@ Url:
 
 %build
 # >> build pre
+# can't unconfigure them, lets just remove those:
+rm -r libtests
+rm -r manual
+rm -r fuzz
+
 mkdir -p build/
 pushd build
 # << build pre
