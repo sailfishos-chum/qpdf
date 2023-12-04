@@ -185,8 +185,7 @@ pushd build
     -DINSTALL_MANUAL=OFF \
     -DINSTALL_EXAMPLES=OFF \
     -DREQUIRE_CRYPTO_OPENSSL=ON \
-    -DDEFAULT_CRYPTO_OPENSSL=ON \
-    --target qpdf
+    -DDEFAULT_CRYPTO_OPENSSL=ON
 
 make %{?_smp_mflags}
 
