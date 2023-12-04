@@ -10,7 +10,7 @@ Name:       qpdf
 %define __cmake_in_source_build OFF
 
 Summary:    PDF transformation/manipulation program + library
-Version:    11.3.0
+Version:    11.6.3
 Release:    0
 Group:      Applications
 License:    ASL 2.0 or Artistic 2.0
